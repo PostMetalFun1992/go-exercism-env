@@ -11,6 +11,9 @@ services:
     tty: true
 
     volumes:
+      - ./cache:/home/developer/.cache
+
       - ./src:/home/developer/project:Z
+
       - ./helix:/home/developer/.config/helix:Z
       - ./exercism:/home/developer/.config/exercism:Z
