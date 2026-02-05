@@ -11,9 +11,9 @@ services:
     tty: true
 
     volumes:
-      - ./cache:/home/developer/.cache
+      - ${PROJECT_PATH:-./src}:/home/developer/project:Z
 
-      - ./src:/home/developer/project:Z
+      - ./cache:/home/developer/.cache
 
       - ./confs/.bashrc:/home/developer/.bashrc:Z
       - ./confs/helix:/home/developer/.config/helix:Z
