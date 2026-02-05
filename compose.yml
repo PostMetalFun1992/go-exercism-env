@@ -1,0 +1,16 @@
+services:
+  env:
+    image: go-exercism-env
+    container_name: go-exercism-env
+    hostname: arch-box
+
+    network_mode: bridge
+    userns_mode: keep-id
+
+    stdin_open: true
+    tty: true
+
+    volumes:
+      - ./src:/home/developer/project:Z
+      - ./helix:/home/developer/.config/helix:Z
+      - ./exercism:/home/developer/.config/exercism:Z
