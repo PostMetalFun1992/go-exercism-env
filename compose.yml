@@ -15,6 +15,7 @@ services:
 
       - ./src:/home/developer/project:Z
 
+      - ./confs/.bashrc:/home/developer/.bashrc:Z
       - ./confs/helix:/home/developer/.config/helix:Z
-      - ./confs/exercism:/home/developer/.config/exercism:Z
       - ./confs/zellij:/home/developer/.config/zellij:Z
+      - ./confs/exercism:/home/developer/.config/exercism:Z
