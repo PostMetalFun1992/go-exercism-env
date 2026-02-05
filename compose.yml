@@ -15,5 +15,5 @@ services:
 
       - ./src:/home/developer/project:Z
 
-      - ./helix:/home/developer/.config/helix:Z
-      - ./exercism:/home/developer/.config/exercism:Z
+      - ./confs/helix:/home/developer/.config/helix:Z
+      - ./confs/exercism:/home/developer/.config/exercism:Z
