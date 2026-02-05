@@ -12,6 +12,7 @@ RUN pacman -Sy --noconfirm archlinux-keyring && \
     gopls \
     git \
     shadow \
+    starship \
     zellij \
     helix
 
@@ -28,6 +29,8 @@ USER $USERNAME
 
 ENV COLORTERM=truecolor
 ENV TERM=xterm-256color
+
+ENV SHELL=/bin/bash
 
 ENV HOME=/home/$USERNAME
 ENV GOPATH=$HOME/go

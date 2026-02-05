@@ -11,4 +11,4 @@ alias hx='helix'
 alias z='zellij'
 alias ide='zellij --layout ~/.config/zellij/layout.kdl'
 
-PS1='[\u@\h \W]\$ '
+eval "$(starship init bash)"
