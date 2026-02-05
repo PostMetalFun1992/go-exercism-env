@@ -12,6 +12,7 @@ RUN pacman -Sy --noconfirm archlinux-keyring && \
     gopls \
     git \
     shadow \
+    zellij \
     helix
 
 RUN curl -L https://github.com/exercism/cli/releases/download/v3.5.8/exercism-3.5.8-linux-x86_64.tar.gz \

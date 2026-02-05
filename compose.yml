@@ -17,3 +17,4 @@ services:
 
       - ./confs/helix:/home/developer/.config/helix:Z
       - ./confs/exercism:/home/developer/.config/exercism:Z
+      - ./confs/zellij:/home/developer/.config/zellij:Z
