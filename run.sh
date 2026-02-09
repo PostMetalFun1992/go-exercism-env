@@ -6,7 +6,6 @@ PROJECT_ROOT="$(pwd)"
 echo "🔧 Configs loaded from: $ENV_ROOT"
 echo "📂 Mounting project:   $PROJECT_ROOT"
 
-PROJECT_PATH="$PROJECT_ROOT" podman-compose \
-  -f "$ENV_ROOT/compose.yml" \
-  --in-pod False \
-   run --rm env
+PROJECT_PATH="$PROJECT_ROOT" docker compose \
+  -f "$ENV_ROOT/docker-compose.yml" \
+  run --rm env

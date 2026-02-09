@@ -11,22 +11,26 @@ This project follows the **"Environment as a Tool"** philosophy.
 * **Editor:** Helix (`hx`) with pre-configured LSP (`gopls`).
 * **Multiplexer:** Zellij with a custom layout (Code + Logs tabs).
 * **Shell:** Bash with Starship prompt and persistent history.
-* **Permissions:** Rootless Podman setup (maps host UID/GID to container user to avoid permission issues).
+* **Permissions:** Docker setup maps your host UID/GID to the container user during build time to avoid permission issues with mounted volumes.
 * **Portable:** Configuration files (`helix`, `.bashrc`, layouts) are injected from this repository, keeping your project directories clean.
+* **Cache:** Uses Docker named volumes for Go modules and build cache to keep your host system clean and speed up builds.
 
 ## 📋 Prerequisites
 
 To run this environment on a "bare metal" host, you only need:
 
-1.  **Podman** (Rootless recommended)
-2.  **Podman Compose**
+1.  **Docker Engine**
+2.  **Docker Compose**
 3.  **Git**
+
+> **Note for Linux users:** Ensure your user is added to the `docker` group so you don't need to run scripts with `sudo`.
+> (`sudo usermod -aG docker $USER` and re-login).
 
 ---
 
 ## 🛠️ Build
 
-You need to build the container image once. This script creates the image and configures the internal user to match your host UID (preventing permission issues).
+You need to build the container image once. This script creates the image and passes your current host UID/GID to the container, ensuring file ownership matches your host system.
 
 1.  Clone this repository:
     ```bash
@@ -36,7 +40,8 @@ You need to build the container image once. This script creates the image and co
 
 2.  Run the build script:
     ```bash
-    ./podman/build.sh
+    cd ./docker
+    ./build.sh
     ```
 
 ---
@@ -58,7 +63,7 @@ You can launch this environment from **any directory**. The script automatically
 
 ---
 
-## 👩‍💻Exercism Configuration
+## 👩‍💻 Exercism Configuration
 
 To download exercises and submit solutions, you need to link the CLI to your Exercism account.
 

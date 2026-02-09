@@ -1,0 +1,20 @@
+services:
+  env:
+    image: go-exercism-env
+    container_name: go-exercism-env
+    hostname: arch-box
+    network_mode: bridge
+    stdin_open: true
+    tty: true
+    volumes:
+      - ${PROJECT_PATH:-./src}:/home/developer/project
+
+      - go-cache:/home/developer/.cache
+
+      - ./confs/.bashrc:/home/developer/.bashrc
+      - ./confs/helix:/home/developer/.config/helix
+      - ./confs/zellij:/home/developer/.config/zellij
+      - ./confs/exercism:/home/developer/.config/exercism
+
+volumes:
+  go-cache:

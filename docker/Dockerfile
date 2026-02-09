@@ -1,4 +1,4 @@
-FROM docker.io/archlinux:latest
+FROM archlinux:latest
 
 ARG USERNAME=developer
 ARG USER_ID=1000
@@ -23,18 +23,25 @@ RUN mkdir -p /usr/share/bash-completion/completions && \
     exercism completion bash > /usr/share/bash-completion/completions/exercism
 
 RUN groupadd -g $GROUP_ID $USERNAME || true && \
-    useradd -m -u $USER_ID -g $GROUP_ID -s /bin/bash $USERNAME
-
-USER $USERNAME
+    useradd -m -u $USER_ID -g $GROUP_ID -s /bin/bash $USERNAME || \
+    useradd -m -u $USER_ID -s /bin/bash $USERNAME
 
 ENV COLORTERM=truecolor
 ENV TERM=xterm-256color
 
 ENV SHELL=/bin/bash
-
 ENV HOME=/home/$USERNAME
+
 ENV GOPATH=$HOME/go
 ENV PATH=$PATH:$GOPATH/bin
+
+USER $USERNAME
+
+RUN mkdir -p $HOME/.cache \
+    && mkdir -p $HOME/go \
+    && mkdir -p $HOME/.config/helix \
+    && mkdir -p $HOME/.config/zellij \
+    && mkdir -p $HOME/.config/exercism
 
 WORKDIR $HOME/project
 
